@@ -1,0 +1,481 @@
+{% set matricule_user = folder.user.matricule  %}
+
+{% set id_compte_courant = null  %}
+{% set num_compte_courant = null  %}
+
+{% set id_compte_epargne = null  %}
+{% set num_compte_epargne = null  %}
+
+{% set salaire = null  %}
+<h1>Employé</h1>
+<section class="section">
+	<div class="section-body">
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<ul class="list-group list-group-horizontal-xl justify-content-center">
+							<li class="list-group-item">
+								<p class="clearfix ">
+									<span class="float-left pr-2">
+										Matricule:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.matricule}}
+									</span>
+								</p>
+							</li>
+							<li class="list-group-item">
+								<p class="clearfix ">
+									<span class="float-left pr-2">
+										Compte Courant:
+									</span>
+									<span class="float- text-muted">
+										{% for compte in folder.comptes|filter(compte => compte.type =="CURRENT" ) %}
+											{{ compte.numCpte }}
+											{% set id_compte_courant = compte.id  %}
+											{% set num_compte_courant = compte.numCpte  %}
+										{% endfor %}
+									</span>
+								</p>
+							</li>
+							<li class="list-group-item">
+								<p class="clearfix ">
+									<span class="float-left pr-2">
+										Compte Epargne:
+									</span>
+									<span class="float- text-muted">
+										{% for compte in folder.comptes|filter(compte => compte.type =="SAVING" ) %}
+											{{ compte.numCpte }}
+											{% set id_compte_epargne = compte.id  %}
+											{% set num_compte_epargne = compte.numCpte  %}
+										{% endfor %}
+									</span>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-sm-4 justify-content-center">
+			<div class="col-12 col-md-12 col-lg-12">
+				<div class="card author-box">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12 col-lg-4 border-right">
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Nom complet:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.prenom}}
+										{{folder.user.nom}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Date Naissance:
+									</span>
+									<span class="float- text-muted">
+										{{ folder.user.dateNaiss is empty ? " " : folder.user.dateNaiss|date("m/d/Y ") }}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Lieu de Naissance:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.lieuNaiss}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Situation Matrimoniale:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.SM}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										adresse:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.adresse}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Telephone:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.telephone}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Email:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.email}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Nationalité:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.nationality}}
+									</span>
+								</p>
+
+							</div>
+							<div class="col-md-12 col-lg-4 border-right">
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Type Piece Identity:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.typePieceIdentity}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Numero Piece Identity:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.numeroPieceIdentity}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										dateDelivrance:
+									</span>
+									<span class="float- text-muted">
+										{{ folder.user.dateDelivrance is empty ? " " : folder.user.dateDelivrance|date("m/d/Y ") }}
+									</span>
+								</p>
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Profession:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.profession}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										activité:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.activite}}
+									</span>
+								</p>
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Taille de la Famille:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.tailleFamille}}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Autre personne à contacter:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.otherContactFullName}}
+									</span>
+								</p>
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Telephone autre personne à contacter:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.otherContactFullName}}
+									</span>
+								</p>
+
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Lien de parenté autre contact:
+									</span>
+									<span class="float- text-muted">
+										{{folder.user.otherContactParentalBond}}
+									</span>
+								</p>
+
+							</div>
+							<div class="col-md-12 col-lg-4">
+								<div class="author-box-center pb-3">
+									<img alt="image" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" class="rounded-circle author-box-picture"/>
+									<div class="clearfix"></div>
+									<div class="badge badge-success mt-2">{{folder.user.genre}}</div>
+								</div>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Date d'admissibilite assurance collective
+									</span>
+									<span class="float- text-muted">
+										{{ folder.user.insuranceEligibleAt is empty ? " " : folder.user.insuranceEligibleAt|date("m/d/Y ") }}
+									</span>
+								</p>
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Date d'inscription
+									</span>
+									<span class="float- text-muted">
+										{{ folder.user.createdAt is empty ? " " : folder.user.createdAt|date("m/d/Y ") }}
+									</span>
+								</p>
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Date de prise de servce
+									</span>
+									<span class="float- text-muted">
+										{{ folder.user.servicePlugAt is empty ? " " : folder.user.servicePlugAt|date("m/d/Y ") }}
+									</span>
+								</p>
+
+								<p class="clearfix border-bottom">
+									<span class="float-left pr-2">
+										Date de fin de contrat
+									</span>
+									<span class="float- text-muted">
+										{{ folder.user.endOfContractAt is empty ? " " : folder.user.endOfContractAt|date("m/d/Y ") }}
+									</span>
+								</p>
+
+								<button class="btn btn-icon icon-left btn-primary folder_emp m-2">
+									<i class="fas fa-file"></i>
+									DOSSIER DE L EMPLOYE</button>
+								<button class="btn btn-icon icon-left btn-primary contrat_emp  m-2">
+									<i class="fas fa-file"></i>
+									CONTRAT DE TRAVAIL</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="mb-2" style=" display: flex;">
+	<h1>Compte Courant</h1>
+	<button type="button" class="btn btn-light p-2 m-2">Solde:<span class="badge" id="soldeCompteCurrent"></span>
+	</button>
+</div>
+<section class="section">
+	<div class="section-body">
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>Compte Courant Dépôt</h4>
+						<div class="card-header-action">
+							{% if is_granted('ROLE_ADMIN_SYSTEM') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CASSIER') %}
+								<a href="{{path('folder_compte_current_deposit_new',{'idFolder':folder.id,'idCompte':id_compte_courant})}}" class="btn btn-icon icon-left btn-success" id="folder_compte_current_deposit_new">
+									nouveau dépôt
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table w-100" id="dtFolderCompteCurrentDeposit">
+								<thead>
+									<tr>
+										<th class="th-sm">#</th>
+										<th class="th-sm">Reference</th>
+										<th class="th-sm">Montant</th>
+										<th class="th-sm">Date de versement</th>
+										<th class="th-sm">reçu</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-12 col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>Compte Courant Retrait</h4>
+						<div class="card-header-action">
+							{% if is_granted('ROLE_ADMIN_SYSTEM') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CASSIER') %}
+								<a href="{{path('folder_compte_current_withdrawal_new',{'idFolder':folder.id,'idCompte':id_compte_courant})}}" class="btn btn-icon icon-left btn-success" id="folder_compte_current_withdrawal_new">
+									nouveau retrait
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table w-100" id="dtFolderCompteCurrentWithdrawal">
+								<thead>
+									<tr>
+										<th class="th-sm">#</th>
+										<th class="th-sm">Reference</th>
+										<th class="th-sm">Montant</th>
+										<th class="th-sm">Date de versement</th>
+										<th class="th-sm">reçu</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<div class="mb-2" style=" display: flex;">
+	<h1>Compte Epargne</h1>
+	<button type="button" class="btn btn-light p-2 m-2">Solde:<span class="badge" id="soldeCompteSaving"></span>
+	</button>
+</div>
+<section class="section">
+	<div class="section-body">
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>Compte Epargne Dépôt</h4>
+						<div class="card-header-action">
+							{% if is_granted('ROLE_ADMIN_SYSTEM') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CASSIER') %}
+								<a href="{{path('folder_compte_saving_deposit_new',{'idFolder':folder.id,'idCompte':id_compte_epargne})}}" class="btn btn-icon icon-left btn-success" id="folder_compte_saving_deposit_new">
+									nouveau dépôt
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table w-100" id="dtFolderCompteSavingDeposit">
+								<thead>
+									<tr>
+										<th class="th-sm">#</th>
+										<th class="th-sm">Reference</th>
+										<th class="th-sm">Montant</th>
+										<th class="th-sm">Date de versement</th>
+										<th class="th-sm">reçu</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-12 col-lg-6">
+				<div class="card">
+					<div class="card-header">
+						<h4>Compte Epargne Retrait</h4>
+						<div class="card-header-action">
+							{% if is_granted('ROLE_ADMIN_SYSTEM') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CASSIER') %}
+								<a href="{{path('folder_compte_saving_withdrawal_new',{'idFolder':folder.id,'idCompte':id_compte_epargne})}}" class="btn btn-icon icon-left btn-success" id="folder_compte_saving_withdrawal_new">
+									nouveau retrait
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table w-100" id="dtFolderCompteSavingWithdrawal">
+								<thead>
+									<tr>
+										<th class="th-sm">#</th>
+										<th class="th-sm">Reference</th>
+										<th class="th-sm">Montant</th>
+										<th class="th-sm">Date de versement</th>
+										<th class="th-sm">reçu</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section">
+	<div class="section-body">
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-7">
+				<h1>Virement</h1>
+				<div class="card">
+					<div class="card-header">
+						<h4></h4>
+						<div class="card-header-action">
+							{% if is_granted('ROLE_ADMIN_SYSTEM') or is_granted('ROLE_ADMIN') or is_granted('ROLE_CASSIER') %}
+								<a href="{{path('folder_compte_virement_new',{'idFolder':folder.id,'idCompte':id_compte_courant})}}" class="btn btn-icon icon-left btn-success" id="folder_compte_virement_new">
+									nouveau virement
+								</a>
+							{% endif %}
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table w-100" id="dtFolderVirement">
+								<thead>
+									<tr>
+										<th class="th-sm">#</th>
+										<th class="th-sm">Reference</th>
+										<th class="th-sm">Montant</th>
+										<th class="th-sm">Date de virement</th>
+										<th class="th-sm">Bulletin de salaire</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-12 col-lg-5">
+				<h1>Salaires</h1>
+				<div class="card">
+					<div class="card-header">
+						<a href="" class="btn btn-icon icon-left btn-success" id="">
+							AUGMENTATION DE SALAIRE
+						</a>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-hover table w-100" id="">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Montant</th>
+										<th>Date de creation</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for remuneration in folder.user.remunerations %}
+										<tr>
+											{% set salaire = remuneration.salaire  %}
+											<td>{{ loop.index }}</td>
+											<td>{{ remuneration.salaire }}</td>
+											<td>{{ remuneration.createdAt ? remuneration.createdAt|date('d/m/Y') : '' }}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section><input type="hidden" name="id_folder" id="id_folder" value="{{folder.id}}"><input type="hidden" name="id_compte_courant" id="id_compte_courant" value="{{id_compte_courant }}"><input type="hidden" name="id_compte_epargne" id="id_compte_epargne" value="{{id_compte_epargne }}"><input type="hidden" name="csrfToken_folder" id="csrfToken_folder" value="{{ csrf_token('csrfToken_folder' ~ folder.id) }}"><input type="hidden" name="matricule_member" id="matricule_member" value="{{matricule_user }}"><input type="hidden" name="matricule_employe" id="matricule_employe" value="{{app.user.matricule }}"><input type="hidden" name="num_compte_courant" id="num_compte_courant" value="{{num_compte_courant }}"><input type="hidden" name="num_compte_epargne" id="num_compte_epargne" value="{{num_compte_epargne }}"><input type="hidden" name="member" id="member" value=" {{folder.user.prenom}} {{folder.user.nom}}"><input type="hidden" name="employe" id="employe" value="{{app.user.prenom }} {{app.user.nom }}">

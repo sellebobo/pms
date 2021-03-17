@@ -1,0 +1,57 @@
+<section class="section">
+	<div class="card">
+		{% include "shared/notification.html.twig" %}
+		<div class="card-header">
+			<h5>{{action}}
+				employé</h5>
+		</div>
+		<div class="card-body ">
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="col-4 col-md-4 col-lg-4">
+					{{ form_row(form.login) }}
+					{{ form_row(form.email) }}
+					{% if form.password is defined %}
+						{{ form_row(form.password) }}
+						{{ form_row(form.passwordConfirm) }}
+					{% endif %}
+					{{ form_row(form.userRoles) }}
+					{{ form_row(form.genre) }}
+					{{ form_row(form.nom) }}
+					{{ form_row(form.prenom) }}
+					{{ form_row(form.dateNaiss) }}
+
+				</div>
+				<div class="col-4 col-md-4 col-lg-4">
+					{{ form_row(form.lieuNaiss) }}
+					{{ form_row(form.adresse) }}
+					{{ form_row(form.telephone) }}
+					{{ form_row(form.nationality) }}
+					{{ form_row(form.SM) }}
+					{{ form_row(form.activite) }}
+					{{ form_row(form.typePieceIdentity) }}
+					{{ form_row(form.numeroPieceIdentity) }}
+					{{ form_row(form.dateDelivrance) }}
+
+				</div>
+				<div class="col-4 col-md-4 col-lg-4">
+					{{ form_row(form.profession) }}
+					{{ form_row(form.tailleFamille) }}
+					{{ form_row(form.otherContactFullName) }}
+					{{ form_row(form.otherContactPhone) }}
+					{{ form_row(form.otherContactParentalBond) }}
+					{{ form_row(form.insuranceEligibleAt) }}
+					{{ form_row(form.servicePlugAt)}}
+					{{ form_row(form.endOfContractAt)}}
+					{{ form_row(form.signedContratAt)}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center my-4">
+					<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+</section>

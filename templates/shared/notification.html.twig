@@ -1,0 +1,18 @@
+{% for label, messages in app.flashes %}
+	{% for message in messages %}
+		{% set newLabel = "" %}
+		{% if label =="error" %}
+			{% set newLabel = "danger" %}
+		{% else %}
+			{% set newLabel = label %}
+		{% endif %}
+		<div class="alert alert-{{newLabel}} alert-dismissible fade show  m-2">
+			<div class="alert-body">
+				<button class="close" data-dismiss="alert">
+					<span>×</span>
+				</button>
+				{{ message }}
+			</div>
+		</div>
+	{% endfor %}
+{% endfor %}
