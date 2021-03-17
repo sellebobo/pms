@@ -7,7 +7,7 @@ use App\Controller\Admin\AdminSharedController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("admin/client")
+ * @Route("/admin/client")
  */
 class ClientController extends AdminSharedController
 {

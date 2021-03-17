@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("admin/employe")
+ * @Route("/admin/employe")
  */
 class EmployeController extends AdminSharedController
 {
