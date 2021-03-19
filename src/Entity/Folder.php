@@ -30,13 +30,13 @@ class Folder
 
 
     /**
-     * @ORM\OneToOne(targetEntity=Client::class, inversedBy="folder", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Client::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="folder", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $employe;

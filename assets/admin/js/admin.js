@@ -13,7 +13,7 @@ import "../css/responsive.css";
 import "../styles/admin.css";
 import "pixeden-stroke-7-icon";
 import "select2/dist/css/select2.css";
-
+import "@fortawesome/fontawesome-free/css/all.css";
 import "../css/style.css";
 
 import $ from "jquery";
@@ -23,6 +23,7 @@ global.$ = global.jQuery = $;
 global.popper = global.Popper = popper;
 
 require("bootstrap");
+require('@fortawesome/fontawesome-free/js/all.js');
 const feather = require("feather-icons");
 import "./sidebar-menu.js";
 import "./config.js";
@@ -46,6 +47,7 @@ feather.replace();
 
 import "./Components/banque.js";
 import "./Components/employe.js";
+import "./Components/client.js";
 
 (function ($) {
   "use strict";

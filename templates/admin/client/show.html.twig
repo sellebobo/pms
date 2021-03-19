@@ -1,8 +1,3 @@
-{% set matricule_employe = folder.employe.matricule  %}
-{% set id_compte_courant = null  %}
-{% set num_compte_courant = null  %}
-{% set id_compte_epargne = null  %}
-{% set num_compte_epargne = null  %}
 
 
 <h1>Employé</h1>
@@ -19,7 +14,7 @@
 										Matricule:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.matricule}}
+										{{client.matricule}}
 									</span>
 								</p>
 							</li>
@@ -29,11 +24,7 @@
 										Compte Courant:
 									</span>
 									<span class="float- text-muted">
-										{% for compte in folder.comptes|filter(compte => compte.type =="CURRENT" ) %}
-											{{ compte.numCpte }}
-											{% set id_compte_courant = compte.id  %}
-											{% set num_compte_courant = compte.numCpte  %}
-										{% endfor %}
+									
 									</span>
 								</p>
 							</li>
@@ -43,11 +34,7 @@
 										Compte Epargne:
 									</span>
 									<span class="float- text-muted">
-										{% for compte in folder.comptes|filter(compte => compte.type =="SAVING" ) %}
-											{{ compte.numCpte }}
-											{% set id_compte_epargne = compte.id  %}
-											{% set num_compte_epargne = compte.numCpte  %}
-										{% endfor %}
+										
 									</span>
 								</p>
 							</li>
@@ -67,8 +54,8 @@
 										Nom complet:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.prenom}}
-										{{folder.employe.nom}}
+										{{client.prenom}}
+										{{client.nom}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -76,7 +63,7 @@
 										Date Naissance:
 									</span>
 									<span class="float- text-muted">
-										{{ folder.employe.dateNaiss is empty ? " " : folder.employe.dateNaiss|date("m/d/Y ") }}
+										{{ client.dateNaiss is empty ? " " : client.dateNaiss|date("m/d/Y ") }}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -84,7 +71,7 @@
 										Lieu de Naissance:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.lieuNaiss}}
+										{{client.lieuNaiss}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -92,7 +79,7 @@
 										Situation Matrimoniale:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.SM}}
+										{{client.SM}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -100,7 +87,7 @@
 										adresse:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.adresse}}
+										{{client.adresse}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -108,7 +95,7 @@
 										Telephone:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.telephone}}
+										{{client.telephone}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -116,7 +103,7 @@
 										Email:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.email}}
+										{{client.email}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -124,7 +111,7 @@
 										Nationalité:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.nationality}}
+										{{client.nationality}}
 									</span>
 								</p>
 
@@ -136,7 +123,7 @@
 										Type Piece Identity:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.typePieceIdentity}}
+										{{client.typePieceIdentity}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -144,7 +131,7 @@
 										Numero Piece Identity:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.numeroPieceIdentity}}
+										{{client.numeroPieceIdentity}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -152,7 +139,7 @@
 										dateDelivrance:
 									</span>
 									<span class="float- text-muted">
-										{{ folder.employe.dateDelivrance is empty ? " " : folder.employe.dateDelivrance|date("m/d/Y ") }}
+										{{ client.dateDelivrance is empty ? " " : client.dateDelivrance|date("m/d/Y ") }}
 									</span>
 								</p>
 
@@ -161,7 +148,7 @@
 										Profession:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.profession}}
+										{{client.profession}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -169,7 +156,7 @@
 										activité:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.activite}}
+										{{client.activite}}
 									</span>
 								</p>
 
@@ -178,7 +165,7 @@
 										Taille de la Famille:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.tailleFamille}}
+										{{client.tailleFamille}}
 									</span>
 								</p>
 								<p class="clearfix border-bottom">
@@ -186,7 +173,7 @@
 										Autre personne à contacter:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.otherContactFullName}}
+										{{client.otherContactFullName}}
 									</span>
 								</p>
 
@@ -195,7 +182,7 @@
 										Telephone autre personne à contacter:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.otherContactFullName}}
+										{{client.otherContactFullName}}
 									</span>
 								</p>
 
@@ -205,7 +192,7 @@
 										Lien de parenté autre contact:
 									</span>
 									<span class="float- text-muted">
-										{{folder.employe.otherContactParentalBond}}
+										{{client.otherContactParentalBond}}
 									</span>
 								</p>
 
@@ -214,42 +201,18 @@
 								<div class="author-box-center pb-3">
 									<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
 									<div class="clearfix"></div>
-									<div class="badge badge-success mt-2">{{folder.employe.genre}}</div>
+									<div class="badge badge-success mt-2">{{client.genre}}</div>
 								</div>
-								<p class="clearfix border-bottom">
-									<span class="float-left pr-2">
-										Date d'admissibilite assurance collective
-									</span>
-									<span class="float- text-muted">
-										{{ folder.employe.insuranceEligibleAt is empty ? " " : folder.employe.insuranceEligibleAt|date("m/d/Y ") }}
-									</span>
-								</p>
-
+								
 								<p class="clearfix border-bottom">
 									<span class="float-left pr-2">
 										Date d'inscription
 									</span>
 									<span class="float- text-muted">
-										{{ folder.employe.createdAt is empty ? " " : folder.employe.createdAt|date("m/d/Y ") }}
+										{{ client.createdAt is empty ? " " : client.createdAt|date("m/d/Y ") }}
 									</span>
 								</p>
-								<p class="clearfix border-bottom">
-									<span class="float-left pr-2">
-										Date de prise de servce
-									</span>
-									<span class="float- text-muted">
-										{{ folder.employe.servicePlugAt is empty ? " " : folder.employe.servicePlugAt|date("m/d/Y ") }}
-									</span>
-								</p>
-
-								<p class="clearfix border-bottom">
-									<span class="float-left pr-2">
-										Date de fin de contrat
-									</span>
-									<span class="float- text-muted">
-										{{ folder.employe.endOfContractAt is empty ? " " : folder.employe.endOfContractAt|date("m/d/Y ") }}
-									</span>
-								</p>
+								
 							</div>
 						</div>
 					</div>

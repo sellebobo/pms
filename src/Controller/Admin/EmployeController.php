@@ -103,7 +103,7 @@ class EmployeController extends AdminSharedController
                 $em->persist($folder);
                 $em->flush();
 
-                $banque= $this->getDoctrine()->getRepository(Banque::class)->findOneBy(['name'=>'PMS']);
+                $banque = $this->getDoctrine()->getRepository(Banque::class)->findOneBy(['name' => 'PMS']);
                 if ($banque == null) {
                     $this->addFlash('error', 'Veuillez ajouter la banque par defaut PMS');
                     return $this->redirectToRoute('employe_index');
@@ -141,5 +141,32 @@ class EmployeController extends AdminSharedController
             dd($th);
             die();
         }
+    }
+
+    /**
+     * @Route("/dossier/{id}/show", name="employe_show", methods={"GET"})
+     */
+    public function show($id): Response
+    {
+        $employe = $this->userRepository->findOneBy(['id' => $id, 'status' => true]);
+        //dd($employe);
+        if ($employe == null) {
+            $this->addFlash('error', "Echec cet employe a été archivé");
+            return $this->redirectToRoute('employe_index');
+        }
+        $folder = $this->folderRepository->findOneBy(['employe' => $employe, 'status' => true]);
+       // dd($folder);
+        if ($folder == null) {
+            $this->addFlash('error', "Ce dossier a été archivé");
+            return $this->redirectToRoute('employe_index');
+        }
+        
+
+        return $this->render($this->layoutAdmin, [
+            'contenu' => 'admin/employe/show.html.twig',
+            'folder' => $folder,
+            'current_menu' => 'current_user',
+            'current_sub_menu' => 'current_employe',
+        ]);
     }
 }

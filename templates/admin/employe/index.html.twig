@@ -1,5 +1,5 @@
 <section class="section pt-5">
-	<div class="section-body">
+	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-12 col-md-12 col-lg-12">
 				<div class="card">
@@ -44,18 +44,10 @@
 													{{role.title }}
 												{% endfor %}
 											</td>
-											<td>											
-												{# <div style="display: flex;!important">
-													<a class="btn btn-light btn-action" href="{{ path('user_show', {'id': user.id}) }}">
-														<i class="fas fa-folder text-info"></i>
-													</a>
-													<a href="{{ path('user_password_update', {'id': user.id}) }}" class="btn btn-light btn-action mr-1">
-														<i class="fas fa-lock text-info"></i>
-													</a>
-													<a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-light btn-action mr-1">
-														<i class="fas fa-pencil-alt text-info"></i>
-													</a>
-												</div> #}
+											<td>
+												<a class="btn btn-light btn-action" href="{{ path('employe_show', {'id': employe.id}) }}" data-toggle="tooltip" data-placement="top" title="Détail">
+													<i class="fas fa-folder"></i>
+												</a>
 											</td>
 										</tr>
 									{% endfor %}
